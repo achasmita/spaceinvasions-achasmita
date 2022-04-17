@@ -1,24 +1,22 @@
 #include <iostream>
-#include <string>
-
+#include <cstdio>
+#include <cstdlib>
+#include <unistd.h>
+#include <ncurses.h>
+#include <curses.h>
+#include <time.h>
+#include <cstring>
+//#include "invader.h"
+#include "menu.h"
 
 using namespace std;
+#define MAX_BOMBS 1000
 
-int main()
-{
-	
-	const string s = "Space Invaders!  ";
-	string myStuff;
+int main() {
 
+    mainMenu();
+    clear();
+  //  gamePlay();
 
-	while(myStuff.compare("q") != 0)
-	{
-		cout << s << endl;
-		getline(cin, myStuff);
-		system("clear");
-		cout << myStuff << endl;
-	}
-
-
-	return 0;
-}
+    return 0;
+} 
