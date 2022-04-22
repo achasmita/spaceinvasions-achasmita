@@ -15,7 +15,7 @@ using namespace std;
 int main() {
 
     mainMenu();
-    clear();
+    //clear();
   //  gamePlay();
 
     return 0;
