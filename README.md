@@ -15,6 +15,9 @@ This repository contains the implementation for Space Invaders.  Computer Scienc
     ```` console
     user@user/spaceinvasions-achasmita$ make
     
-    # This will create an executable file called space. Next, invoke the following command to run the game
+    # This will create an executable file called space. 
+    # Next, invoke the following command to run the game
+
     user@user/spaceinvasions-achasmita$ ./space
+
     ````
