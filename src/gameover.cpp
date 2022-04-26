@@ -31,7 +31,7 @@ void gameover(int win, int score)
         int user_score;
         string word, line, temp;
         fin.open("HighScore.csv", ios::in);
-        fout.open("HighScorenew.csv", ios::out);
+        
         vector<string> row;
         int idx = 0;
 
@@ -49,9 +49,11 @@ void gameover(int win, int score)
             users[idx] = row[0];
             idx++;
         }
+        fin.close();
 
         if (score > scores[2])
         {
+            
             clear();
             echo();
             nocbreak();
@@ -64,6 +66,8 @@ void gameover(int win, int score)
             refresh();
     
             getnstr(name, sizeof(name)-1);
+
+            fout.open("HighScorenew.csv", ios::out);
         
             if (score >= scores[0])
             {
