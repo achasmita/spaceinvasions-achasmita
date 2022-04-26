@@ -3,20 +3,21 @@
 #include <cstdlib>
 #include <unistd.h>
 #include <ncurses.h>
-#include <curses.h>
 #include <time.h>
 #include <cstring>
-//#include "invader.h"
+#include "space.h"
 #include "menu.h"
+#include "gameplay.h"
 
 using namespace std;
 #define MAX_BOMBS 1000
 
+/* The main function handles user input, the game visuals, and checks for win/loss conditions */
 int main() {
-
+    int level = 0;
+    int score = 0;
     mainMenu();
-    //clear();
-  //  gamePlay();
-
-    return 0;
-} 
+    gamePlay(level, score);
+   	
+   return 0;
+}
