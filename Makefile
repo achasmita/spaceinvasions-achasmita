@@ -1,8 +1,8 @@
 GCC=g++
  
   
-all: space.cpp menu.cpp
-	$(GCC) -g -Wall -o space space.cpp menu.cpp gameplay.cpp gamepause.cpp gameover.cpp -lncurses
+all: src/space.cpp src/menu.cpp
+	$(GCC) -g -Wall -o space src/space.cpp src/menu.cpp src/gameplay.cpp src/gamepause.cpp src/gameover.cpp -lncurses
 
 clean: 
 	$(RM) space space.o menu.o
