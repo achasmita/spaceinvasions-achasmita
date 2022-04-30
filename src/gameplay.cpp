@@ -55,29 +55,29 @@ void gamePlay(int level, int score)
     tank.setRow(LINES -2);
     tank.setColumn(COLS / 2);
     tank.setCharacter('^');
-    tank.setAlive(3);
+    tank.setLive(3);
 
     alienShip.setRow(5);
     alienShip.setColumn(COLS -20);
     alienShip.setCharacter('v');
     alienShip.setScore(20);
     alienShip.setAlive(1);
-    alienShip.setPR(0);
-    alienShip.setPC(0);
+    alienShip.setdefaultRow(0);
+    alienShip.setdefaultColumn(0);
     alienShip.setDir('l');
     int spaceship_score[4] = {50, 100, 150, 200};
     int enemyship_appear[5] = {25, 35, 45, 10, 30};
     srand (time(NULL));
    
-    alienShip.setPR(0);
-    alienShip.setPC(0);
+    alienShip.setdefaultRow(0);
+    alienShip.setdefaultColumn(0);
 
     /* Set aliens settings */
     for (i=0; i<10; ++i) {
         aliens[i].setRow(7);
         aliens[i].setColumn(i*3+20);
-        aliens[i].setPR(0);
-        aliens[i].setPC(0);
+        aliens[i].setdefaultRow(0);
+        aliens[i].setdefaultColumn(0);
         aliens[i].setCharacter('A');
         aliens[i].setAlive(1);
         aliens[i].setDir('r');
@@ -86,8 +86,8 @@ void gamePlay(int level, int score)
     for (i=10; i<20; ++i) {
         aliens[i].setRow(8);
         aliens[i].setColumn((i-10)*3 + 20);
-        aliens[i].setPR(0);
-        aliens[i].setPC(0);
+        aliens[i].setdefaultRow(0);
+        aliens[i].setdefaultColumn(0);
         aliens[i].setCharacter('B');
         aliens[i].setAlive(1);
         aliens[i].setDir('r');
@@ -96,8 +96,8 @@ void gamePlay(int level, int score)
     for (i=20; i<30; ++i) {
         aliens[i].setRow(9);
         aliens[i].setColumn((i-20)*3 + 20);
-        aliens[i].setPR(0);
-        aliens[i].setPC(0);
+        aliens[i].setdefaultRow(0);
+        aliens[i].setdefaultColumn(0);
         aliens[i].setCharacter('B');
         aliens[i].setAlive(1);
         aliens[i].setDir('r');
@@ -106,8 +106,8 @@ void gamePlay(int level, int score)
     for (i=30; i<40; ++i) {
         aliens[i].setRow(10);
         aliens[i].setColumn((i-30)*3 + 20);
-        aliens[i].setPR(0);
-        aliens[i].setPC(0);
+        aliens[i].setdefaultRow(0);
+        aliens[i].setdefaultColumn(0);
         aliens[i].setCharacter('C');
         aliens[i].setAlive(1);
         aliens[i].setDir('r');
@@ -116,8 +116,8 @@ void gamePlay(int level, int score)
     for (i=40; i<50; ++i) {
         aliens[i].setRow(11);
         aliens[i].setColumn((i-40)*3 + 20);
-        aliens[i].setPR(0);
-        aliens[i].setPC(0);
+        aliens[i].setdefaultRow(0);
+        aliens[i].setdefaultColumn(0);
         aliens[i].setCharacter('C');
         aliens[i].setAlive(1);
         aliens[i].setDir('r');
@@ -132,8 +132,8 @@ void gamePlay(int level, int score)
         {
             for(int k =1; k < 6; k++ )
             {
-                barrier[count].setPR(0);
-                barrier[count].setPC(0);
+                barrier[count].setdefaultRow(0);
+                barrier[count].setdefaultColumn(0);
                 barrier[count].setRow(LINES -j);
                 barrier[count].setColumn(k+l);
                 barrier[count].setCharacter(61);
@@ -164,8 +164,8 @@ void gamePlay(int level, int score)
         bomb[i].setActive(0);
         bomb[i].setCharacter('+');
         bomb[i].setLoop(0);
-        bomb[i].setPR(0);
-        bomb[i].setPC(0);
+        bomb[i].setdefaultRow(0);
+        bomb[i].setdefaultColumn(0);
     }
    
     /* Display game title,score header,options */
@@ -237,16 +237,16 @@ void gamePlay(int level, int score)
                         addch(' ');
                     }
 
-                    if (tank.getAlive()  > 1 && tank.getRow() == bomb[i].getRow() && tank.getColumn() == bomb[i].getColumn()) 
+                    if (tank.getLive()  > 1 && tank.getRow() == bomb[i].getRow() && tank.getColumn() == bomb[i].getColumn()) 
                     {
                         bomb[i].setActive(0);
                         --currentbombs;
                         --currenttanks;
                         --lives;
-                        tank.setAlive(tank.getAlive() - 1);
+                        tank.setLive(tank.getLive() - 1);
                         break;
                     }
-                    if (tank.getAlive()  == 1 && tank.getRow() == bomb[i].getRow() && tank.getColumn() == bomb[i].getColumn()) 
+                    if (tank.getLive()  == 1 && tank.getRow() == bomb[i].getRow() && tank.getColumn() == bomb[i].getColumn()) 
                     {
                         win = 0;
                         break;
@@ -299,13 +299,13 @@ void gamePlay(int level, int score)
                
                     for (j=0; j<50; ++j) 
                     {
-                        if (aliens[j].getAlive() == 1 && aliens[j].getRow() == shot[i].getRow() && aliens[j].getPC() == shot[i].getColumn()) {
+                        if (aliens[j].getAlive() == 1 && aliens[j].getRow() == shot[i].getRow() && aliens[j].getdefaultColumn() == shot[i].getColumn()) {
                             score += aliens[j].getScore();
                             aliens[j].setAlive(0);
                             shot[i].setActive(0);
                             --currentshots;
                             --currentaliens;
-                            move(aliens[j].getPR(),aliens[j].getPC());
+                            move(aliens[j].getdefaultRow(),aliens[j].getdefaultColumn());
                             addch(' ');
                             break;
                         }
@@ -359,14 +359,14 @@ void gamePlay(int level, int score)
             {
                 if (aliens[i].getAlive() == 1) 
                 {
-                    move(aliens[i].getPR() ,aliens[i].getPC());
+                    move(aliens[i].getdefaultRow() ,aliens[i].getdefaultColumn());
                     addch(' ');
                     
                     move(aliens[i].getRow(),aliens[i].getColumn());
                     addch(aliens[i].getCharacter());
                     
-                    aliens[i].setPR(aliens[i].getRow());
-                    aliens[i].setPC(aliens[i].getColumn());
+                    aliens[i].setdefaultRow(aliens[i].getRow());
+                    aliens[i].setdefaultColumn(aliens[i].getColumn());
                     
                     /* Check if alien should drop bomb */
                     random = 1+ (rand()%100);
@@ -439,10 +439,10 @@ void gamePlay(int level, int score)
         if (loops % settings.alienShip ==0)
             if (alienShip.getAlive() == 1 && flag_alienship ==1 && dir_change < 2) 
             {
-                alienShip.setPR(alienShip.getRow());
-                alienShip.setPC(alienShip.getColumn());
+                alienShip.setdefaultRow(alienShip.getRow());
+                alienShip.setdefaultColumn(alienShip.getColumn());
 
-                move(alienShip.getPR(), alienShip.getPC());
+                move(alienShip.getdefaultRow(), alienShip.getdefaultColumn());
                 addch(' ');
                 
                 /* Set alien's next position */
@@ -525,9 +525,9 @@ void gamePlay(int level, int score)
             win = 0;
             break;
         }
-        else if (input == KEY_LEFT)
+        else if (input == KEY_LEFT || input == (int) 'a')
             tank.setColumn(tank.getColumn() -1);
-        else if (input == KEY_RIGHT)
+        else if (input == KEY_RIGHT || input == (int) 'd')
             tank.setColumn(tank.getColumn() +1);
         else if (input == ' ' && currentshots < nshots) 
         {

@@ -1,13 +1,9 @@
-/* Space Invaders */
 
-/* header file for invaders.c */
-//#include<cstring>
-//using namespace std;
 
 class Characters {
 private:
 	int r,c;
-	int pr,pc;
+	int drow,dcol;
 	int alive; /* 1=alive 0=destroyed */
 	char direction; /* 'l'=left 'r'=right */
 	char ch;
@@ -32,20 +28,20 @@ public:
       return c;
     }
 
-	void setPR(int PR) {
-      pr = PR;
+	void setdefaultRow(int dRow) {
+      drow = dRow;
     }
     
-    int getPR() {
-      return pr;
+    int getdefaultRow() {
+      return drow;
     }
 
-	void setPC(int PC) {
-      pc = PC;
+	void setdefaultColumn(int dCol) {
+      dcol = dCol;
     }
     
-    int getPC() {
-      return pc;
+    int getdefaultColumn() {
+      return dcol;
     }
 
 	void setAlive(int Alive) {
@@ -101,6 +97,19 @@ class alien : public Characters{
 };
 
 class player : public Characters{
+  private:
+  	int live;
+  
+  public:
+  void setLive(int Live) {
+      live = Live;
+    }
+    
+    int getLive() {
+      return live;
+    }
+
+  
 	
 };
 

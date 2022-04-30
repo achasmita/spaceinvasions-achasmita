@@ -51,15 +51,15 @@ int	mainMenu()
 	mvprintw (yMax-(yMax-10), (xMax-29)/2, "    * *      *     *  *     *    ");
 	mvprintw (yMax-(yMax-11),(xMax-29)/2, "***** *     *       * ***** *****");
 
-	mvprintw (yMax-(yMax-12), (xMax-41)/2, "***** *   * *       *    *     ***** ***** *****");
-	mvprintw (yMax-(yMax-13), (xMax-41)/2, "  *   **  *  *     *    * *    *   * *     *   *");
-	mvprintw (yMax-(yMax-14), (xMax-41)/2, "  *   * * *   *   *    *****   *   * ***** *****");
-	mvprintw (yMax-(yMax-15), (xMax-41)/2, "  *   *  **    * *    *     *  *   * *     * *  ");
-	mvprintw (yMax-(yMax-16), (xMax-41)/2, "***** *   *     *    *       * ***** ***** *   *");
+	mvprintw (yMax-(yMax-13), (xMax-41)/2, "***** *   * *       *    *     ***** ***** *****");
+	mvprintw (yMax-(yMax-14), (xMax-41)/2, "  *   **  *  *     *    * *    *   * *     *   *");
+	mvprintw (yMax-(yMax-15), (xMax-41)/2, "  *   * * *   *   *    *****   *   * ***** *****");
+	mvprintw (yMax-(yMax-16), (xMax-41)/2, "  *   *  **    * *    *     *  *   * *     * *  ");
+	mvprintw (yMax-(yMax-17), (xMax-41)/2, "***** *   *     *    *       * ***** ***** *   *");
 
 	mvprintw (yMax-5, (xMax-24)/2, "Press \"h\" for game instructions.");
 	mvprintw (yMax-4, (xMax-24)/2, "Press \"q\" to quit game.");
-	mvprintw (yMax-2, (xMax-24)/2, "Press \"space\" to start game.");
+	mvprintw (yMax-3, (xMax-24)/2, "Press \"space\" to start game.");
 	
 	refresh();
 

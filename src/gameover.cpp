@@ -40,7 +40,7 @@ void gameover(int win, int score)
             vector<string> row;
             stringstream s(line);
         
-            while (getline(s, word, ' ')) 
+            while (getline(s, word, '-')) 
             {
                 row.push_back(word);
             }
@@ -64,8 +64,8 @@ void gameover(int win, int score)
             move(3,0);
             addstr("Enter your initial: ");
             refresh();
-    
             getnstr(name, sizeof(name)-1);
+
 
             fout.open("HighScorenew.csv", ios::out);
         
@@ -92,7 +92,7 @@ void gameover(int win, int score)
             }
             for (int k = 0; k<3; k++)
             {
-                fout << users[k]<< " " << scores[k]<< "\n";
+                fout << users[k]<< "-" << scores[k]<< "\n";
             }
             fout.close();
             remove("HighScore.csv");

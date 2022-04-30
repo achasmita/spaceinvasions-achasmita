@@ -12,7 +12,7 @@
 using namespace std;
 #define MAX_BOMBS 1000
 
-/* The main function handles user input, the game visuals, and checks for win/loss conditions */
+/* Tme main function handles mainmenu and overall game play */
 int main() {
     int level = 0;
     int score = 0;
